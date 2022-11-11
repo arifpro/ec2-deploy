@@ -154,7 +154,7 @@
 
 ## Run your project <a name="run-your-project"></a>
 
-- [STEP-1]: Go to your browser and type `http://<your-instance-public-ip>:<your-app-port>`.
+- Go to your browser and type `http://<your-instance-public-ip>:<your-app-port>`.
 
   ```sh
   # Example
