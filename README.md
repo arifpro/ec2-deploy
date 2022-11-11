@@ -45,8 +45,14 @@ A simple tool to deploy a git repository to an EC2 instance.
 
 ## Deploy your project
 
-<!-- - [With Docker](https://github.com/0xavalon/wind-web-payroll/tree/main/with%20docker) -->
-- [With Docker](./with%20docker)
+<!-- - [Without Docker](./without%20docker) -->
+- [Without Docker](https://github.com/arifpro/ec2-deploy/tree/main/without%20docker)
+  - [ONLY STEP]: Add `ec2-deploy.yml` file on `.github/workflows` directory of your project. (you can rename this yml file to any name you like)
+      <!-- - [ec2-deploy.yml](./without%20docker/.github/workflows/ec2-deploy.yml) -->
+    - [ec2-deploy.yml](https://github.com/arifpro/ec2-deploy/tree/main/without%20docker/.github/workflows/ec2-deploy.yml)
+    > You will find it here [Without Docker](./without%20docker)
+<!-- - [With Docker](./with%20docker) -->
+- [With Docker](https://github.com/arifpro/ec2-deploy/tree/main/with%20docker)
   - [STEP-1]: Firstly, install docker on ec2 instance.
     - For ubuntu 22 lts, run the following command.
 
@@ -80,7 +86,17 @@ A simple tool to deploy a git repository to an EC2 instance.
       sudo chmod +x /usr/bin/docker-compose
         ```
 
-  - [STEP-3]: Push your code to github (**without** docker command on yml file).
+  - [STEP-3]: Add config files to your project.
+    - Add `Dockerfile` and `docker-compose.yml` file on root directory of your project.
+      <!-- - [Dockerfile](./with%20docker/Dockerfile) -->
+      - [Dockerfile](https://github.com/arifpro/ec2-deploy/tree/main/with%20docker/Dockerfile)
+      <!-- - [docker-compose.yml](./with%20docker/docker-compose.yml) -->
+      - [docker-compose.yml](https://github.com/arifpro/ec2-deploy/tree/main/with%20docker/docker-compose.yml)
+    - Add `ec2-deploy.yml` file on `.github/workflows` directory of your project. (you can rename this yml file to any name you like)
+      <!-- - [ec2-deploy.yml](./with%20docker/.github/workflows/ec2-deploy.yml) -->
+      - [ec2-deploy.yml](https://github.com/arifpro/ec2-deploy/tree/main/with%20docker/.github/workflows/ec2-deploy.yml)
+    > You will find it here [With Docker](./with%20docker)
+  - [STEP-4]: Push your code to github (**without** docker command on yml file).
 
       ```yml
       name: Push-to-EC2 # Any name you want to set
@@ -97,13 +113,13 @@ A simple tool to deploy a git repository to an EC2 instance.
           runs-on: self-hosted
           steps:
             - uses: actions/checkout@v3
-            - name: Env file copy
+            - name: Env file Env file copy from /home/ubuntu to project
               run: |
                     scp /home/ubuntu/.env ./
       ```
 
-  - [STEP-4]: Run `sudo docker-compose up -d --build` on your instance terminal.
-  - [STEP-5]: If everything looking good, push your code to github (**with** docker command on yml file).
+  - [STEP-5]: Run `sudo docker-compose up -d --build` on your instance terminal.
+  - [STEP-6]: If everything looking good, push your code to github (**with** docker command on yml file).
 
     ```yml
     name: Push-to-EC2 # Any name you want to set
@@ -120,14 +136,12 @@ A simple tool to deploy a git repository to an EC2 instance.
         runs-on: self-hosted
         steps:
           - uses: actions/checkout@v3
-          - name: Env file copy
+          - name: Env file copy from /home/ubuntu to project
             run: |
                   scp /home/ubuntu/.env ./
           - name: Build with Docker compose
             run: sudo docker-compose down && docker-compose up -d --build
     ```
-<!-- - [Without Docker](https://github.com/0xavalon/wind-web-payroll/tree/main/without%20docker) -->
-<!-- - [Without Docker](./without%20docker) -->
 
 ## Run your project
 

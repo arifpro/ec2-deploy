@@ -13,8 +13,17 @@ jobs:
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
       - name: Env file copy from /home/ubuntu to project
         run: |
               scp /home/ubuntu/.env ./
-      # - name: Build with Docker compose
-      #   run: sudo docker-compose down && docker-compose up -d --build
+      - name: Install NPM dependencies
+        run: npm install
+      - name: Build Next.js app
+        run: npm run build
+      - name: Run Next.js app
+        run: sudo npx pm2 start npm --  start
+      # - name: Stop Next.js app
+      #   run: npx pm2 kill
