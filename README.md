@@ -1,7 +1,17 @@
 <h1 align="center">AWS EC2 deploy process</h1>
-<p align="center">This is a simple guide to deploy a git repository on AWS EC2.</p>
+<h3 align="center">This is a simple guide to deploy a git repository on AWS EC2.</h3>
 
-## Installation
+<br />
+<br />
+<br />
+
+## Table of contents
+
+- [Installation](#installation)
+- [Deploy your project](#deploy-your-project)
+- [Run your project](#run-your-project)
+
+## Installation <a name="installation"></a>
 
 - [STEP-1]: First create instance on AWS (ubuntu 22 lts)
   - [OPTION-1 `SSH`]: Connect your instance with ssh on your local machine.
@@ -42,7 +52,7 @@
     APP_PORT=3000
     ```
 
-## Deploy your project
+## Deploy your project <a name="deploy-your-project"></a>
 
 <!-- - [Without Docker](./without%20docker) -->
 - [Without Docker](https://github.com/arifpro/ec2-deploy/tree/main/without%20docker)
@@ -142,7 +152,7 @@
             run: sudo docker-compose down && docker-compose up -d --build
     ```
 
-## Run your project
+## Run your project <a name="run-your-project"></a>
 
 - [STEP-1]: Go to your browser and type `http://<your-instance-public-ip>:<your-app-port>`.
 
