@@ -170,8 +170,8 @@
 
 [Apache License 2.0](./LICENSE)
 
-<style>
+<!-- <style>
   .body {
     background: #22272e;
   }
-</style>
+</style> -->
