@@ -10,26 +10,27 @@
 - [Installation](#installation)
 - [Deploy your project](#deploy-your-project)
 - [Run your project](#run-your-project)
+- [More](#more)
 
 ## Installation <a name="installation"></a>
 
-- [STEP-1]: First create instance on AWS (ubuntu 22 lts)
-  - [OPTION-1 `SSH`]: Connect your instance with ssh on your local machine.
+- **STEP-1**: First create instance on AWS (ubuntu 22 lts)
+  - **OPTION-1 `SSH`**: Connect your instance with ssh on your local machine.
     - Go to your instance on AWS console.
     - Click on CONNECT.
     - Copy the command and paste it on your terminal.
-  - [OPTION-2 `BROWSER`]: You can connect terminal of your instance from AWS console.
-    - Go to your instance on AWS console.
-    - Click on CONNECT.
-    - Click on `EC2 Instance Connect` tab and then click on `Connect` button.
-- [STEP-2]: Then connect your github repository with your instance.
+  - **OPTION-2 `Browser`**: You can connect terminal of your instance from AWS console.
+    a. Go to your instance on AWS console.
+    b. Click on CONNECT.
+    c. Click on `EC2 Instance Connect` tab and then click on `Connect` button.
+- **STEP-2**: Then connect your github repository with your instance.
   - Go to `Setting` of your repository on github.
   - Then `Actions`.
   - Under dropdown menu, select `Runners`.
   - Then click on `New self-hosted runner` button.
   - Select `Linux`.
   - Copy the commands and paste it in your instance terminal.
-- [STEP-3]: Create .env file on root directory (/home/ubuntu/.env) so that you don't have to push .env file on github.
+- **STEP-3**: Create .env file on root directory (/home/ubuntu/.env) so that you don't have to push .env file on github.
   - Create file by using nano editor.
 
     ```sh
@@ -56,13 +57,13 @@
 
 <!-- - [Without Docker](./without%20docker) -->
 - [Without Docker](https://github.com/arifpro/ec2-deploy/tree/main/without%20docker)
-  - [ONLY STEP]: Add `ec2-deploy.yml` file on `.github/workflows` directory of your project. (you can rename this yml file to any name you like)
+  - **ONLY STEP**: Add `ec2-deploy.yml` file on `.github/workflows` directory of your project. (you can rename this yml file to any name you like)
       <!-- - [ec2-deploy.yml](./without%20docker/.github/workflows/ec2-deploy.yml) -->
     - [ec2-deploy.yml](https://github.com/arifpro/ec2-deploy/tree/main/without%20docker/.github/workflows/ec2-deploy.yml)
     > You will find it here [Without Docker](./without%20docker)
 <!-- - [With Docker](./with%20docker) -->
 - [With Docker](https://github.com/arifpro/ec2-deploy/tree/main/with%20docker)
-  - [STEP-1]: Firstly, install docker on ec2 instance.
+  - **STEP-1**: Firstly, install docker on ec2 instance.
     - For ubuntu 22 lts, run the following command.
 
       ```sh
@@ -83,8 +84,7 @@
       docker version
       ```
 
-  - [STEP-2]: Secondly, docker-compose on ec2 instance.
-
+  - **STEP-2**: Secondly, docker-compose on ec2 instance.
     - For ubuntu 22 lts, run the following command.
 
       ```sh
@@ -93,9 +93,9 @@
       sudo mv /usr/local/bin/docker-compose /usr/bin/docker-compose
 
       sudo chmod +x /usr/bin/docker-compose
-        ```
+      ```
 
-  - [STEP-3]: Add config files to your project.
+  - **STEP-3**: Add config files to your project.
     - Add `Dockerfile` and `docker-compose.yml` file on root directory of your project.
       <!-- - [Dockerfile](./with%20docker/Dockerfile) -->
       - [Dockerfile](https://github.com/arifpro/ec2-deploy/tree/main/with%20docker/Dockerfile)
@@ -105,7 +105,7 @@
       <!-- - [ec2-deploy.yml](./with%20docker/.github/workflows/ec2-deploy.yml) -->
       - [ec2-deploy.yml](https://github.com/arifpro/ec2-deploy/tree/main/with%20docker/.github/workflows/ec2-deploy.yml)
     > You will find it here [With Docker](./with%20docker)
-  - [STEP-4]: Push your code to github (**without** docker command on yml file).
+  - **STEP-4**: Push your code to github (**without** docker command on yml file).
 
       ```yml
       name: Push-to-EC2 # Any name you want to set
@@ -127,8 +127,8 @@
                     scp /home/ubuntu/.env ./
       ```
 
-  - [STEP-5]: Run `sudo docker-compose up -d --build` on your instance terminal.
-  - [STEP-6]: If everything looking good, push your code to github (**with** docker command on yml file).
+  - **STEP-5**: Run `sudo docker-compose up -d --build` on your instance terminal.
+  - **STEP-6**: If everything looking good, push your code to github (**with** docker command on yml file).
 
     ```yml
     name: Push-to-EC2 # Any name you want to set
@@ -154,12 +154,11 @@
 
 ## Run your project <a name="run-your-project"></a>
 
-- Go to your browser and type `http://<your-instance-public-ip>:<your-app-port>`.
+Go to your browser and type `http://<your-instance-public-ip>:<your-app-port>`.
 
-  ```sh
-  # Example
-  http://12.34.5.67:3000
-  ```
+> Example: <http://12.34.5.67:3000>
+
+## More <a name="more"></a>
 
 > You can use Route53 of AWS to add a domain or subdomain to your instance public ip.
 > By default, your instance public ip will be `http` not `https`.
