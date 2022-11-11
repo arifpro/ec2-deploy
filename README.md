@@ -1,6 +1,5 @@
-# ec2-deploy
-
-A simple tool to deploy a git repository to an EC2 instance.
+<h1 align="center">AWS EC2 deploy process</h1>
+<p align="center">This is a simple guide to deploy a git repository on AWS EC2.</p>
 
 ## Installation
 
