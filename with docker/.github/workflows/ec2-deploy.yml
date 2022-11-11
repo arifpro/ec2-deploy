@@ -1,0 +1,20 @@
+name: Push-to-EC2 # Any name you want to set
+
+# Trigger deployment only on push and pull request to main branch
+on:
+  push:
+    branches: [ main ] # Branch name
+  pull_request:
+    branches: [ main ] # Branch name
+
+jobs:
+  build:
+    name: Deploy to EC2
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v3
+      - name: Env file copy
+        run: |
+              scp /home/ubuntu/.env ./
+      # - name: Build with Docker compose
+      #   run: sudo docker-compose down && docker-compose up -d --build

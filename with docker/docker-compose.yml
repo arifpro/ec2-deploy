@@ -1,0 +1,16 @@
+version: '2'
+services:
+  project-name:
+    container_name: project_name
+    build:
+      context: .  # it specifies the build-directory, where the Dockerfile is looked-up.
+      dockerfile: Dockerfile # for Dockerfile alternative name
+    image: project_name:latest
+    logging:
+      driver: awslogs
+      options:
+        awslogs-group: project_name_log_group
+        awslogs-stream: project_name_log_stream
+    ports:
+      - 80:3000 # 80 is the default port on aws, 3000 is the port on the project
+    restart: on-failure
