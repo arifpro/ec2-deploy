@@ -17,4 +17,4 @@ jobs:
         run: |
               scp /home/ubuntu/.env ./
       # - name: Build with Docker compose
-      #   run: sudo docker-compose down && docker-compose up -d --build
+      #   run: sudo docker-compose down && docker-compose up -d --build && sudo docker image prune -f -a
