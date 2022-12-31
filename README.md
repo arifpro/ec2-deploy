@@ -113,8 +113,6 @@
       on:
         push:
           branches: [ prod ] # Branch name
-        pull_request:
-          branches: [ prod ] # Branch name
 
       jobs:
         build:
@@ -135,8 +133,6 @@
 
     on:
       push:
-        branches: [ prod ] # Branch name
-      pull_request:
         branches: [ prod ] # Branch name
 
     jobs:
